@@ -3,4 +3,29 @@
     height: 800px;
     width: 1200px;
     border: 2px solid violet;
+    perspective: 600px;
+}
+
+#pasaule {
+    height: inherit;
+    width: inherit;
+    transform-style: preserve-3d;
+}
+
+#element0 {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background: violet;
+    opacity: 0.5;
+    transform: translate3d(100px,100px,10px);
+}
+
+#element1 {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background: green;
+    opacity: 0.5;
+    transform: translate3d(0px,0px,0px);
 }
