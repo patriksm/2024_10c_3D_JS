@@ -17,6 +17,21 @@ var lab1 = [
     [1000, 0, 0, 0, 90, 0, 2000, 200, "brown", 0.5],
 ];
 
+var vel = 5;
+var uzPrieksu = uzAtpakal = 0;
+
+function move(ev, speed){
+    if(ev.keyCode == 87){
+        uzPrieksu = speed;
+    }
+    if(ev.keyCode == 83){
+        uzAtpakal = speed;
+    }
+}
+
+document.addEventListener("keydown", (event) => {this.move(event, vel)});
+document.addEventListener("keyup", (event) => {this.move(event, 0)});
+
 function zimetLabirintu(map){
     for(let i = 0; i < map.length; i++){
         var newElement = document.createElement("div");
@@ -47,11 +62,14 @@ zimetLabirintu(lab1);
 var t = 0;
 
 function update(){
-    t+=1;
+
+    dx = uzPrieksu - uzAtpakal;
+
+    t += dx;
 
     world.style.transform = `
     
-        translate3d(${0}px, ${0}px, ${0}px)
+        translate3d(${0}px, ${0}px, ${t}px)
 
         rotateX(${0}deg)
 
