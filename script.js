@@ -1,5 +1,8 @@
 var world = document.getElementById("pasaule");
-var t=0;
+var t = 0;
+var vel = 5;
+var uzPrieksu = uzAtpakal = 0;
+var paLabi = paKreisi = 0;
 
 var labirints = [
     [0, 0, 1000, 0, 0, 0, 2000, 200, "url('img/siena.jpg')", 1], //priekseja
@@ -82,20 +85,33 @@ function zimetLabirintu(karte){
 
 zimetLabirintu(labirints);
 
+function move(ev, speed){
+    if(ev.keyCode == 87){
+        uzPrieksu = speed;
+    }
+    if(ev.keyCode == 83){
+        uzAtpakal = speed;
+    }
+}
+
+document.addEventListener("keydown", (event) => {this.move(event, vel)});
+document.addEventListener("keyup", (event) => {this.move(event, 0)});
+
 function update(){
-    t+=1;
+    dz = uzPrieksu - uzAtpakal;
+    t += dz;
 
     world.style.transform = `
         translate3d(
                 ${0}px,
                 ${0}px, 
-                ${0}px
+                ${t}px
         ) 
         
-        rotateX($(0)deg) 
+        rotateX(${0}deg) 
         rotateY(${0}deg) 
         rotateZ(${0}deg) `;
 
 }
 
-let view = setInterval(update, 100);
+let view = setInterval(update, 10);
