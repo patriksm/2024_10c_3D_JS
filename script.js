@@ -55,33 +55,46 @@ var labirints = [
     
 ];
 
-for(let i = 0; i < labirints.length; i++){
-    var newElement = document.createElement("div");
-    newElement.id = "element" + i;
-    newElement.style.position = "absolute";
-    newElement.style.background = labirints[i][8];
-    newElement.style.opacity = labirints[i][9];
-    newElement.style.width = `${labirints[i][6]}px`;
-    newElement.style.height = `${labirints[i][7]}px`;
-    newElement.style.transform = `
-        
-        translate3d(
-                ${600 - labirints[i][6]/2 + labirints[i][0]}px,
-                ${400 - labirints[i][7]/2 + labirints[i][1]}px,
-                ${labirints[i][2]}px
-        )
-
-        rotateX(${labirints[i][3]}deg) 
-        rotateY(${labirints[i][4]}deg) 
-        rotateZ(${labirints[i][5]}deg)
-    `;
-    world.append(newElement);
+function zimetLabirintu(karte){
+    for(let i = 0; i < karte.length; i++){
+        var newElement = document.createElement("div");
+        newElement.id = "element" + i;
+        newElement.style.position = "absolute";
+        newElement.style.background = karte[i][8];
+        newElement.style.opacity = karte[i][9];
+        newElement.style.width = `${karte[i][6]}px`;
+        newElement.style.height = `${karte[i][7]}px`;
+        newElement.style.transform = `
+            
+            translate3d(
+                    ${600 - karte[i][6]/2 + karte[i][0]}px,
+                    ${400 - karte[i][7]/2 + karte[i][1]}px,
+                    ${karte[i][2]}px
+            )
+    
+            rotateX(${karte[i][3]}deg) 
+            rotateY(${karte[i][4]}deg) 
+            rotateZ(${karte[i][5]}deg)
+        `;
+        world.append(newElement);
+    }
 }
+
+zimetLabirintu(labirints);
 
 function update(){
     t+=1;
 
-    world.style.transform = `translate3d(${0}px,${0}px, ${-1500}px) rotateX(-50deg) rotateY(${t}deg) rotateZ(0deg) `;
+    world.style.transform = `
+        translate3d(
+                ${0}px,
+                ${0}px, 
+                ${0}px
+        ) 
+        
+        rotateX($(0)deg) 
+        rotateY(${0}deg) 
+        rotateZ(${0}deg) `;
 
 }
 
