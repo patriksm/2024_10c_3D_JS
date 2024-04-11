@@ -11,7 +11,10 @@ var labirints = [
 ];
 
 var lab1 = [
-    [0, 100, 0, 90, 0, 0, 2000, 2000, "red", 0.5]
+    [0, 100, 0, 90, 0, 0, 2000, 2000, "red", 0.5],
+    [0, 0, -1000, 0, 0, 0, 2000, 200, "green", 0.5],
+    [-1000, 0, 0, 0, 90, 0, 2000, 200, "orange", 0.5],
+    [1000, 0, 0, 0, 90, 0, 2000, 200, "brown", 0.5],
 ];
 
 function zimetLabirintu(map){
@@ -41,8 +44,22 @@ function zimetLabirintu(map){
 
 zimetLabirintu(lab1);
 
-function update(){
+var t = 0;
 
+function update(){
+    t+=1;
+
+    world.style.transform = `
+    
+        translate3d(${0}px, ${0}px, ${0}px)
+
+        rotateX(${0}deg)
+
+        rotateY(${0}deg)
+
+        rotateZ(${0}deg)
+        
+    `;
 }
 
 let spele = setInterval(update, 10);
